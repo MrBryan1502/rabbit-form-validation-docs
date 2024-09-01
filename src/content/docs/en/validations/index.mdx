@@ -1,0 +1,63 @@
+---
+title: 'Section 1: Validation with data-rabbit Attributes'
+description: 'How to apply data-rabbit-validable attributes to forms and inputs'
+---
+
+## Validation with `data-rabbit` Attributes
+
+The **Rabbit Form Validation Library** uses custom `data-rabbit` attributes to identify and manage form validation in a declarative manner. These attributes allow the library to know which form elements need to be validated and what rules apply to each.
+
+### General Requirements
+
+1. **`data-rabbit-validable` attribute on the form:**
+- Every form that contains inputs that you want to validate must have the `data-rabbit-validable` attribute. This tells the library to validate the fields within that form.
+
+```html
+<form data-rabbit-validable>
+<!-- Inputs here -->
+</form>
+```
+
+2. **`data-rabbit-validable` attribute on each input:**
+- Each input that needs validation must also have the `data-rabbit-validable` attribute, regardless of its type (text, checkbox, etc.). This ensures that that field will be validated against the rules defined through other `data-rabbit` attributes.
+
+```html
+<input type="text" data-rabbit-validable />
+```
+
+### Form example
+
+Here is a simple example of how the data-rabbit-validable attribute is applied to a form and the fields you want to validate:
+
+```html
+<form data-rabbit-validable>
+<div>
+<label for="name">Name:</label>
+<input id="name" type="text" data-rabbit-validable data-rabbit-min="3" data-rabbit-max="20" />
+<div class="valid-feedback">All good!</div>
+<div class="invalid-feedback">Something seems wrong!</div>
+</div>
+
+<div>
+<label for="terms">Accept Terms:</label>
+<input id="terms" type="checkbox" data-rabbit-validable data-rabbit-require />
+<div class="valid-feedback">All right!</div>
+<div class="invalid-feedback">This field is required!</div>
+</div>
+
+<button type="submit">Submit</button>
+</form>
+```
+
+### Displaying validations
+
+Currently, the library uses Bootstrap components to display validations:
+
+- ```<div class="valid-feedback" >```: To display positive feedback when a field is valid.
+- ```<div class="invalid-feedback" >```: To display negative feedback when a field is invalid.
+
+> **Note**: We are working on making the library CSS framework agnostic. In future releases, you will be able to customize the display of validations via the `RabbitFormValidation()` function using specific element selectors for validations or via callbacks that are executed when there are valid or invalid fields.
+
+### What's next?
+
+In the next section, we will explore how to set up validations for text inputs using the `data-rabbit` attributes.

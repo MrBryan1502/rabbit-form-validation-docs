@@ -1,0 +1,46 @@
+---
+title: 'Initialization'
+description: 'How to initialize Rabbit Form Validation Library'
+---
+
+## Rabbit Form Validation Library Initialization
+
+To start using **Rabbit Form Validation Library**, you must initialize it correctly depending on whether you are using **JavaScript modules** or not.
+
+### Using JavaScript modules
+
+1. Make sure you import the `RabbitFormValidation()` function into the JavaScript file that acts as the entry point for your site.
+   
+   ```javascript
+   import { RabbitFormValidation } from './path/to/rabbit-form-validation.js';
+   ```
+
+2. It is advisable to run the function inside the `DOMContentLoaded` event to ensure that the entire DOM is fully loaded before validating the forms.
+
+   ```javascript
+   document.addEventListener('DOMContentLoaded', () => {
+      RabbitFormValidation();
+   });
+   ```
+
+### Without using JavaScript modules
+
+1. Load the library file in the HTML of the page where you want to implement validation. When you download the library, the file is called `rabbit-form-validation.js`.
+
+   ```html
+   <script src="path/to/rabbit-form-validation.js"></script>
+   ```
+
+2. Then, run the RabbitFormValidation() function after the DOM has loaded, also inside the `DOMContentLoaded` event:
+
+   ```html
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         RabbitFormValidation();
+      });
+   </script>
+   ```
+
+### What's next?
+
+Now that the library is properly initialized, you can begin defining your form validations using the `data-rabbit-` attributes on the form fields. In the next step, you will learn how to configure validation rules.

@@ -2,6 +2,7 @@
 import type { FunctionComponent } from 'preact'
 import '../../styles/langSelect.scss'
 import { KNOWN_LANGUAGES, langPathRegex } from '../../languages'
+import type { ChangeEvent } from 'preact/compat'
 
 const LanguageSelect: FunctionComponent<{ lang: string }> = ({ lang }) => {
   return (
@@ -27,7 +28,10 @@ const LanguageSelect: FunctionComponent<{ lang: string }> = ({ lang }) => {
       <select
         className="language-select"
         value={lang}
-        onChange={(e) => {
+        onChange={(e: ChangeEvent) => {
+          if (!(e.target instanceof HTMLSelectElement)) {
+            throw new Error("Error no es un select");
+          }
           const newLang = e.target.value
           let actualDest = window.location.pathname.replace(langPathRegex, '/')
           if (actualDest == '/') actualDest = `/introduction`

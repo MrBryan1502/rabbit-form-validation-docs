@@ -1,0 +1,86 @@
+---
+title: 'Sección 3: Validaciones para Inputs de Tipo Checkbox'
+description: 'Cómo aplicar validaciones a checkboxes individuales y grupos de checkboxes utilizando atributos data-rabbit'
+---
+
+## Validaciones para Inputs de Tipo Checkbox
+
+La **Rabbit Form Validation Library** ofrece una solución declarativa para validar tanto checkboxes individuales como grupos de checkboxes. A continuación, se describen las validaciones específicas disponibles para este tipo de inputs.
+
+### Validación de Checkbox Individual
+
+1. **`data-rabbit-require`:**
+  - Este atributo es utilizado para validar que un checkbox esté marcado antes de permitir que el formulario sea enviado. Si el checkbox no está marcado, se mostrará una advertencia de validación.
+  
+  ```html
+  <input type="checkbox" data-rabbit-validable data-rabbit-require />
+  ```
+
+### Validación de Grupos de Checkboxes
+
+Cuando trabajamos con grupos de checkboxes, los atributos `data-rabbit` se utilizan para definir cuántos checkboxes deben o pueden ser seleccionados en total dentro del grupo. Para que estas validaciones funcionen correctamente, todos los checkboxes del grupo deben compartir el mismo atributo `name`.
+
+#### Atributos para Validación de Grupos de Checkboxes
+
+1. **`data-rabbit-length`:**
+
+  - Define la cantidad exacta de checkboxes que deben estar seleccionados en el grupo.
+
+  ```html
+  <input type="checkbox" name="options" data-rabbit-validable data-rabbit-length="2" />
+  ```
+
+2. **`data-rabbit-min`:**
+
+  - Especifica el número mínimo de checkboxes que deben estar seleccionados.
+
+  ```html
+  <input type="checkbox" name="options" data-rabbit-validable data-rabbit-min="1" />
+  ```
+
+3. **`data-rabbit-max`:**
+
+  - Define el número máximo de checkboxes que pueden ser seleccionados en el grupo.
+
+  ```html
+  <input type="checkbox" name="options" data-rabbit-validable data-rabbit-max="3" />
+  ```
+
+### Ejemplo Completo de Validación de Grupos de Checkboxes
+
+A continuación, se presenta un ejemplo práctico de un grupo de checkboxes que utiliza las validaciones de longitud mínima y máxima:
+
+  ```html
+  <form data-rabbit-validable>
+    <div>
+      <label>Selecciona tus intereses:</label>
+      
+      <input type="checkbox" name="intereses" data-rabbit-validable data-rabbit-min="2" data-rabbit-max="4" />
+      <label for="interes1">Tecnología</label>
+      
+      <input type="checkbox" name="intereses" data-rabbit-validable />
+      <label for="interes2">Ciencia</label>
+      
+      <input type="checkbox" name="intereses" data-rabbit-validable />
+      <label for="interes3">Arte</label>
+      
+      <input type="checkbox" name="intereses" data-rabbit-validable />
+      <label for="interes4">Deporte</label>
+      
+      <div class="valid-feedback">¡Selección válida!</div>
+      <div class="invalid-feedback">Selecciona entre 2 y 4 opciones.</div>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+  ```
+
+## Limitaciones Actuales
+
+- Actualmente, los atributos data-rabbit-max y data-rabbit-length no limitan de forma automática la cantidad de checkboxes que el usuario puede seleccionar. Sin embargo, el formulario no será válido si se exceden los límites establecidos. Esta limitación será abordada en futuras actualizaciones de la librería.
+
+- Asegúrate de que siempre haya suficientes checkboxes en el grupo para cumplir con los requisitos de data-rabbit-min. De lo contrario, los usuarios no podrán enviar el formulario.
+
+## ¿Qué sigue?
+
+En la próxima sección, discutiremos el soporte de la librería para diferentes frameworks de CSS y cómo se planea hacerla agnóstica a los estilos en el futuro.

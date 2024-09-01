@@ -1,0 +1,40 @@
+---
+title: 'Sección 4: Limitaciones y Futuras Funcionalidades'
+description: 'Descripción de las limitaciones actuales de la Rabbit Form Validation Library y una visión de las funcionalidades que se planean implementar en el futuro.'
+---
+
+## Limitaciones y Futuras Funcionalidades
+
+A pesar de ser una herramienta poderosa y en crecimiento, la **Rabbit Form Validation Library** aún tiene ciertas limitaciones. En esta sección se describen las funcionalidades que aún no han sido implementadas y las mejoras que están previstas para futuras versiones.
+
+### Limitaciones Actuales
+
+1. **Limitación de Checkbox Seleccionables:**
+   - Actualmente, los atributos `data-rabbit-max` y `data-rabbit-length` en los grupos de checkboxes no limitan físicamente la cantidad de checkboxes que pueden ser seleccionados por el usuario. Aunque el formulario no será válido si se exceden estos límites, los usuarios aún pueden seleccionar más checkboxes de lo permitido. Esto se abordará en una futura actualización.
+
+2. **Soporte CSS Limitado:**
+   - En este momento, la librería utiliza componentes de **Bootstrap** para mostrar mensajes de validación (`valid-feedback` e `invalid-feedback`). Si bien esto permite una integración sencilla con proyectos que utilizan Bootstrap, reduce la flexibilidad para usuarios que prefieren otros frameworks de CSS o soluciones personalizadas.
+
+### Funcionalidades Futuras
+
+1. **Capacidad de Limitar Checkboxes Seleccionables:**
+   - Se planea agregar una funcionalidad para que los atributos `data-rabbit-max` y `data-rabbit-length` limiten activamente la cantidad de checkboxes que los usuarios pueden seleccionar en un grupo, evitando así que el formulario sea marcado como inválido por una selección excesiva.
+
+2. **Agnosticismo al Framework de CSS:**
+   - El equipo está trabajando en hacer la librería **agnóstica al framework de CSS**. Esto se logrará permitiendo a los desarrolladores definir los elementos y selectores en los que desean mostrar mensajes de validación. En versiones futuras, será posible personalizar cómo y dónde se presentan estos mensajes mediante:
+     - Parámetros opcionales en la función `RabbitFormValidation()` para definir selectores personalizados para mensajes de validación.
+     - Callbacks configurables que se ejecutarán cuando se detecten campos válidos o inválidos, lo que permitirá integrarse con cualquier estilo o estructura HTML que el desarrollador prefiera.
+
+3. **Soporte para Más Tipos de Inputs:**
+   - Actualmente, la librería soporta solo inputs de tipo `text` y `checkbox`. En el futuro, se planea expandir el soporte para otros tipos de inputs, como `radio`, `select`, `date`, y más.
+
+4. **Mejora de la Documentación:**
+   - Además de las nuevas funcionalidades, la documentación continuará expandiéndose para incluir más ejemplos prácticos, guías detalladas, y soluciones a problemas comunes.
+
+## Conclusión
+
+La **Rabbit Form Validation Library** sigue en pleno desarrollo, con una comunidad activa de desarrolladores que está trabajando en agregar más funcionalidades y mejorar su flexibilidad. 
+
+Invitamos a todos los desarrolladores interesados a contribuir al proyecto. Si tienes ideas, mejoras o te has encontrado con problemas, ¡tu aporte es bienvenido! Ya sea colaborando en el código, sugiriendo nuevas características o reportando errores, tu ayuda es fundamental para hacer crecer esta librería y hacerla más útil para todos.
+
+Visita el [repositorio oficial](https://github.com/MrBryan1502/rabbit-validation-library) para participar, y síguenos en nuestras redes para estar al tanto de las próximas actualizaciones. ¡Juntos podemos mejorar la experiencia de validación en formularios!

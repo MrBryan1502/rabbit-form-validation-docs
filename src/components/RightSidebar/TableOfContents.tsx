@@ -11,7 +11,7 @@ type ItemOffsets = {
 const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
   headings = []
 }) => {
-  const toc = useRef<HTMLUListElement>()
+  const toc = useRef<HTMLUListElement | null>(null)
   const onThisPageID = 'on-this-page-heading'
   const itemOffsets = useRef<ItemOffsets[]>([])
   const [currentID, setCurrentID] = useState('overview')
@@ -67,8 +67,18 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
     return () => headingsObserver.disconnect()
   }, [toc.current])
 
-  const onLinkClick = (e) => {
-    setCurrentID(e.target.getAttribute('href').replace('#', ''))
+  const onLinkClick = (e: MouseEvent) => {
+    if (!(e.target instanceof HTMLAnchorElement)) {
+      throw new Error("No se que pero es nulo");
+    }
+
+    const href = e.target.getAttribute('href')
+
+    if (!href) {
+      throw new Error("Href null");
+    }
+
+    setCurrentID(href.replace('#', ''))
   }
 
   return (
@@ -81,9 +91,8 @@ const TableOfContents: FunctionalComponent<{ headings: MarkdownHeading[] }> = ({
           .filter(({ depth }) => depth > 1 && depth < 4)
           .map((heading) => (
             <li
-              className={`header-link depth-${heading.depth} ${
-                currentID === heading.slug ? 'current-header-link' : ''
-              }`.trim()}
+              className={`header-link depth-${heading.depth} ${currentID === heading.slug ? 'current-header-link' : ''
+                }`.trim()}
             >
               <a href={`#${heading.slug}`} onClick={onLinkClick}>
                 {unescape(heading.text)}

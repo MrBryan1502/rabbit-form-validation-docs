@@ -1,0 +1,63 @@
+---
+title: 'Sección 1: Validación con Atributos data-rabbit'
+description: 'Cómo aplicar los atributos data-rabbit-validable a formularios e inputs'
+---
+
+## Validación con Atributos `data-rabbit`
+
+La **Rabbit Form Validation Library** utiliza atributos personalizados `data-rabbit` para identificar y gestionar la validación de formularios de manera declarativa. Estos atributos permiten que la librería sepa qué elementos del formulario deben validarse y qué reglas se aplican a cada uno.
+
+### Requisitos Generales
+
+1. **Atributo `data-rabbit-validable` en el formulario:**
+  - Todo formulario que contenga inputs que se desean validar debe tener el atributo `data-rabbit-validable`. Esto le indica a la librería que debe validar los campos dentro de ese formulario.
+  
+  ```html
+  <form data-rabbit-validable>
+    <!-- Inputs aquí -->
+  </form>
+  ```
+
+2. **Atributo `data-rabbit-validable` en cada input:**
+  - Cada input que necesite validación también debe tener el atributo `data-rabbit-validable`, independientemente de su tipo (texto, checkbox, etc.). Esto asegura que ese campo será validado con las reglas que se definan a través de otros atributos `data-rabbit`.
+
+  ```html
+  <input type="text" data-rabbit-validable />
+  ```
+
+### Ejemplo de formulario
+
+Aquí tienes un ejemplo sencillo de cómo se aplica el atributo data-rabbit-validable en un formulario y en los campos que se desean validar:
+
+  ```html
+  <form data-rabbit-validable>
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" type="text" data-rabbit-validable data-rabbit-min="3" data-rabbit-max="20" />
+      <div class="valid-feedback">¡Todo bien!</div>
+      <div class="invalid-feedback">¡Parece que algo está mal!</div>
+    </div>
+
+    <div>
+      <label for="terminos">Aceptar Términos:</label>
+      <input id="terminos" type="checkbox" data-rabbit-validable data-rabbit-require />
+      <div class="valid-feedback">¡Todo bien!</div>
+      <div class="invalid-feedback">¡Este campo es obligatorio!</div>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+  ```
+
+### Visualización de validaciones
+
+Actualmente, la librería utiliza componentes de Bootstrap para mostrar las validaciones:
+
+  - ```<div class="valid-feedback" >```: Para mostrar retroalimentación positiva cuando un campo es válido.
+  - ```<div class="invalid-feedback" >```: Para mostrar retroalimentación negativa cuando un campo es inválido.
+
+> **Nota**: Estamos trabajando para hacer que la librería sea agnóstica al framework de CSS. En futuras versiones, podrás personalizar la visualización de validaciones a través de la función `RabbitFormValidation()` usando selectores de elementos específicos para las validaciones o mediante callbacks que se ejecuten cuando haya campos válidos o inválidos.
+
+### ¿Qué sigue?
+
+En la siguiente sección, exploraremos cómo configurar las validaciones para inputs de tipo texto utilizando los atributos `data-rabbit`.

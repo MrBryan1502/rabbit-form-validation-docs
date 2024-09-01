@@ -31,26 +31,31 @@ $border-color_2: var(--theme-text-light);
   padding-left: 30px;
   padding-right: 1rem;
 }
+
 .language-select-wrapper {
+  color: $color_1;
+  position: relative;
+
   .language-select {
     &:hover {
       color: $color_2;
       border-color: $border-color_2;
     }
+
     &:focus {
       color: $color_2;
       border-color: $border-color_2;
     }
   }
-  color: $color_1;
-  position: relative;
-  > svg {
+
+  >svg {
     position: absolute;
     top: 7px;
     left: 10px;
     pointer-events: none;
   }
 }
+
 @media (min-width: 50em) {
   .language-select {
     width: 100%;

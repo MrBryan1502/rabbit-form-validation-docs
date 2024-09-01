@@ -1,0 +1,76 @@
+---
+title: 'Sección 2: Validaciones para Inputs de Tipo Texto'
+description: 'Cómo aplicar validaciones específicas a inputs de tipo texto utilizando los atributos data-rabbit'
+---
+
+## Validaciones para Inputs de Tipo Texto
+
+La **Rabbit Form Validation Library** ofrece una forma declarativa y sencilla de validar inputs de tipo texto utilizando atributos personalizados `data-rabbit`. A continuación, se describen las validaciones específicas disponibles para este tipo de campos.
+
+### Atributos para Validación de Texto
+
+1. **`data-rabbit-length`:**
+  - Este atributo se utiliza para definir el número exacto de caracteres permitidos en el input. Si el input no cumple con este número exacto de caracteres, se mostrará una advertencia de validación.
+  
+  ```html
+  <input type="text" data-rabbit-validable data-rabbit-length="10" />
+  ```
+
+2. **`data-rabbit-min` y `data-rabbit-max`:**
+  - Estos atributos permiten definir un rango de caracteres aceptables. data-rabbit-min especifica el número mínimo de caracteres que el input debe tener, mientras que data-rabbit-max define el número máximo de caracteres permitidos.
+
+  ```html
+  <input type="text" data-rabbit-validable data-rabbit-min="5" data-rabbit-max="15" />
+  ```
+
+3. **`data-rabbit-regexp`:**
+
+  - Este atributo permite validar el contenido del input utilizando una expresión regular (`regexp`). Esto es útil para asegurarse de que el input siga un formato específico, como un número de teléfono, correo electrónico, etc.
+
+  ```html
+  <input type="text" data-rabbit-validable data-rabbit-regexp="^[a-zA-Z]+$" />
+  ```
+
+>**Nota**: Asegúrate de escribir expresiones regulares correctamente formateadas en el valor de data-rabbit-regexp.
+
+### Restricción Automática de Entrada
+
+La librería no solo valida los inputs, sino que también limita automáticamente la cantidad de caracteres que el usuario puede ingresar en función de los atributos `data-rabbit-max` y `data-rabbit-length`. Esto significa que:
+
+  - `data-rabbit-max` limita el número máximo de caracteres que se pueden escribir en el campo. Una vez alcanzado este número, el usuario no podrá ingresar más caracteres.
+  - `data-rabbit-length` establece un límite exacto de caracteres, y al igual que con `data-rabbit-max`, el campo no aceptará más caracteres de los indicados.
+
+
+Esto previene errores antes de que el formulario sea enviado, ofreciendo una experiencia más fluida y sin frustraciones para los usuarios.
+
+  ```html
+  <input type="text" data-rabbit-validable data-rabbit-length="8" />
+  ```
+
+En este ejemplo, el input solo aceptará 8 caracteres y no permitirá al usuario ingresar más.
+
+### Ejemplo Completo de Validación de Texto
+
+  ```html
+  <form data-rabbit-validable>
+    <div>
+      <label for="username">Nombre de Usuario:</label>
+      <input id="username" type="text" data-rabbit-validable data-rabbit-min="3" data-rabbit-max="15" />
+      <div class="valid-feedback">¡Nombre de usuario válido!</div>
+      <div class="invalid-feedback">Debe tener entre 3 y 15 caracteres.</div>
+    </div>
+    
+    <div>
+      <label for="email">Correo Electrónico:</label>
+      <input id="email" type="text" data-rabbit-validable data-rabbit-regexp="^[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" />
+      <div class="valid-feedback">¡Correo válido!</div>
+      <div class="invalid-feedback">El correo electrónico no tiene un formato válido.</div>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+  ```
+
+### ¿Qué sigue?
+
+En la siguiente sección, aprenderás sobre las validaciones específicas para inputs de tipo checkbox y cómo se gestionan los grupos de checkboxes con atributos `data-rabbit`.
