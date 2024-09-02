@@ -1,5 +1,5 @@
 # 🐰 Rabbit Form Validation Library - Documentation
-[Readme Español](https://github.com/MrBryan1502/rabbit-form-validation-docs/tree/readme_espa%C3%B1ol)
+[Readme Español](https://github.com/MrBryan1502/rabbit-form-validation-docs/tree/readme_espa%C3%B1ol?tab=readme-ov-file#-rabbit-form-validation-library---documentaci%C3%B3n)
 
 This repository contains the official documentation for **Rabbit Form Validation Library**, a simple and efficient form validation library that makes validating `text` and `checkbox` inputs easy, with built-in support for Bootstrap and plans to expand and be CSS framework agnostic.
 
