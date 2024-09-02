@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
   integrations: [mdx(), preact(), react(), sitemap()],
-  base: `/`,
-  site: `https://advanced-astro.dev`
+  base: `/rabbit-form-validation-docs`,
+  site: `https://MrBryan1502.github.io
+`
 })
