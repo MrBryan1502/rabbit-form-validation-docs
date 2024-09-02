@@ -4,7 +4,7 @@ Este repositorio contiene la documentación oficial de **Rabbit Form Validation 
 
 ## Características
 
-- **Validaciones basadas en atributos `data-rabbit-***`: Valida inputs usando atributos personalizados sin necesidad de escribir funciones manualmente.
+- **Validaciones basadas en atributos `data-rabbit-`**: Valida inputs usando atributos personalizados sin necesidad de escribir funciones manualmente.
 - **Soporte para inputs de tipo `text` y `checkbox`**: Maneja validaciones como longitud mínima, máxima, expresiones regulares, y más.
 - **Integración con Bootstrap**: Muestra mensajes de feedback usando los componentes nativos de Bootstrap.
 - **Fácil de extender**: Se está trabajando para hacer la librería compatible con cualquier framework CSS y personalizable con callbacks.
